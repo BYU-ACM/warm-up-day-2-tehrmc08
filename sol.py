@@ -18,6 +18,8 @@ def Binary_Search(arr, to_find):
             low = mid
         else:
             return mid
+        if(arr[mid] == to_find):
+            return mid
         if(high==low):
             return None
     
