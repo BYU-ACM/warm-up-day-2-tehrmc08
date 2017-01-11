@@ -10,20 +10,29 @@ def Binary_Search(arr, to_find):
     cont = True
     low = 0
     high = len(arr)-1
+    #c = 0
     while(cont):
         mid = (low + high)/2
         if(arr[mid] < to_find):
-            high = mid
-        elif(arr[mid] > to_find):
+            #print mid
             low = mid
+        elif(arr[mid] > to_find):
+            #print mid
+            high = mid
         else:
             return mid
         if(arr[mid] == to_find):
             return mid
-        if(high==low):
+        if(arr[low] == to_find):
+            return low
+        if(arr[high] == to_find):
+            return high
+        if(high==low or high == (low +1)):
+            #print mid
             return None
+        #c=c+1
     
-    pass
+    #pass
 
 def Bisection(func, left_side, right_side, tol=1e-5):
     """A direct implementation of Newton's Method
