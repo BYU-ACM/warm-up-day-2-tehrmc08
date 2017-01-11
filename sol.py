@@ -50,14 +50,36 @@ def Bisection(func, left_side, right_side, tol=1e-5):
     if(func(left_side) > 0 and func(right_side) > 0):
         return None
     cont = True
-    low = left_side
-    high = right_side
-    while(cont):
-        mid = (low + high)/2
-        if(func(mid) < -tol):
-            low = mid
-        elif(func(mid) > tol):
-            high = mid
-        else:
-            return mid
+    times = 0
+    if(func(left_side) < 0):
+        #print "HERE"
+        low = left_side
+        high = right_side
+        while(cont):
+            times += 1
+            mid = (low + high)/2
+            if(func(mid) < -tol):
+                low = mid
+            elif(func(mid) > tol):
+                high = mid
+            else:
+                return mid
+            if(times > 100):
+                return mid
+    else:
+        #print "THERE"
+        low = right_side
+        high = left_side
+        while(cont):
+            times += 1
+            mid = (low + high)/2
+            if(func(mid) < -tol):
+                low = mid
+            elif(func(mid) > tol):
+                high = mid
+            else:
+                return mid
+            if(times > 100):
+                print mid
+                return mid
     pass
